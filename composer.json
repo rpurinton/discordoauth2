@@ -1,11 +1,11 @@
 {
-    "name": "rpurinton/gmail",
-    "description": "A Gmail Library for PHP",
+    "name": "rpurinton/discordoauth2",
+    "description": "A Discord OAuth2 Library for PHP",
     "type": "library",
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "RPurinton\\Gmail\\": "src/"
+            "RPurinton\\DiscordOAuth2\\": "src/"
         }
     },
     "authors": [
@@ -19,5 +19,5 @@
         "rpurinton/config": "^1.0.24",
         "rpurinton/https": "^1.0.18"
     },
-    "version": "1.0.13"
+    "version": "1.0.0"
 }
