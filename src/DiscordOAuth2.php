@@ -22,7 +22,17 @@ class DiscordOAuth2
         ]);
     }
 
-    public function init()
+    public static function connect(): array
+    {
+        return (new self())->auth_token();
+    }
+
+    public static function refresh(string $refresh_token): array
+    {
+        return (new self())->refresh_token($refresh_token);
+    }
+
+    private function auth_token(): array
     {
         $client_id = $this->config['web']['client_id'];
         $client_secret = $this->config['web']['client_secret'];
@@ -57,7 +67,7 @@ class DiscordOAuth2
         return json_decode($response, true);
     }
 
-    public function refresh_token(string $refresh_token): array
+    private function refresh_token(string $refresh_token): array
     {
         $response = HTTPS::request([
             'url' => $this->config['web']['token_uri'],
