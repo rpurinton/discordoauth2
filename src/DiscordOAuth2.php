@@ -103,7 +103,7 @@ class DiscordOAuth2
         }
     }
 
-    private function refresh_token(string $refresh_token): array
+    protected function refresh_token(string $refresh_token): array
     {
         $response = HTTPS::request([
             'url' => $this->config['web']['token_uri'],
