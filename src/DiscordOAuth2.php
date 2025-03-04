@@ -1,6 +1,6 @@
 <?php
 
-namespace RPurinton\DiscordOAuth2;
+namespace RPurinton;
 
 use RPurinton\{Config, HTTPS};
 
