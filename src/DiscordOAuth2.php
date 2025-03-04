@@ -38,7 +38,7 @@ class DiscordOAuth2
         }
     }
 
-    public function initialize(): array
+    protected function initialize(): array
     {
         try {
             $client_id = $this->config['web']['client_id'];
@@ -71,7 +71,16 @@ class DiscordOAuth2
         }
     }
 
-    public function information(string $access_token): array
+    public static function info(string $access_token): array
+    {
+        try {
+            return (new self)->information($access_token);
+        } catch (\Exception $e) {
+            throw new DiscordOAuth2Exception($e->getMessage());
+        }
+    }
+
+    protected function information(string $access_token): array
     {
         if (empty($access_token)) throw new \Exception("Access token is empty.");
         try {
@@ -85,7 +94,14 @@ class DiscordOAuth2
         }
     }
 
-
+    public static function refresh(string $refresh_token): array
+    {
+        try {
+            return (new self)->refresh_token($refresh_token);
+        } catch (\Exception $e) {
+            throw new DiscordOAuth2Exception($e->getMessage());
+        }
+    }
 
     private function refresh_token(string $refresh_token): array
     {
